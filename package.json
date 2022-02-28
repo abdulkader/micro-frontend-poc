@@ -1,0 +1,22 @@
+{
+  "name": "micro-frontend-poc",
+  "version": "1.0.0",
+  "private": true,
+  "repository": "git@github.com:abdulkader/micro-frontend-poc.git",
+  "author": "Abdul Kader <ak@itsak.in>",
+  "license": "MIT",
+  "scripts": {
+    "setup": "lerna bootstrap",
+    "dev": "lerna run dev",
+    "build": "lerna run build"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0",
+    "eslint-plugin-react": "^7.29.2",
+    "lerna": "^4.0.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "shared/*"
+  ]
+}

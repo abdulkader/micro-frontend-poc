@@ -1,0 +1,8 @@
+{
+  "npmClientArgs": [
+    "--no-lockfile"
+  ],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "version": "independent"
+}
