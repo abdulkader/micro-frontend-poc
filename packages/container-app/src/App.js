@@ -1,32 +1,29 @@
 import React, { lazy, Suspense } from "react";
 import PropTypes from "prop-types";
-import {
-  unstable_HistoryRouter as HistoryRouter,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
+import { createBrowserHistory } from "history";
 import AppErrorBoundary from "uiComponents/AppErrorBoundary";
 import Header from "uiComponents/Header";
 import Footer from "uiComponents/Footer";
 
 const CatalogApp = lazy(() => import("./apps/CatalogApp"));
-const ContainerApp = ({ history }) => {
+
+const history = createBrowserHistory();
+
+const ContainerApp = () => {
   return (
     <AppErrorBoundary>
       <Header />
       <Suspense fallback={<div>Loading</div>}>
-        <HistoryRouter history={history}>
-          <Routes>
-            <Route
-              path="/*"
-              element={
-                <AppErrorBoundary errorMessage="Error loading catalog application">
-                  <CatalogApp history={history} />
-                </AppErrorBoundary>
-              }
-            />
-          </Routes>
-        </HistoryRouter>
+        <Router history={history}>
+          <Switch>
+            <Route path="/*">
+              <AppErrorBoundary errorMessage="Error loading catalog application">
+                <CatalogApp />
+              </AppErrorBoundary>
+            </Route>
+          </Switch>
+        </Router>
       </Suspense>
       <Footer />
     </AppErrorBoundary>
